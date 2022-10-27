@@ -1,6 +1,6 @@
 ---
 import { SITE } from 'config'
-import '../../styles/base.css'
+import 'styles/base.css'
 
 export type Props = {
   title: string
@@ -11,10 +11,6 @@ export type Props = {
 
 const { title, description = SITE.DESCRIPTION, permalink = SITE.URL, image = '/images/kevin.webp' } = Astro.props as Props
 ---
-
-<link rel='preconnect' href='https://fonts.googleapis.com' />
-<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
-<link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap' rel='stylesheet' />
 
 <meta charset='UTF-8'>
 <meta name='keywords' content={SITE.KEYWORDS} />
@@ -37,10 +33,8 @@ const { title, description = SITE.DESCRIPTION, permalink = SITE.URL, image = '/i
 
 <meta http-equiv='X-UA-Compatible' content='IE=edge'  />
 <meta name='msapplication-TileColor' content='#61dafb' />
-<!-- <meta name='msapplication-config' content='/static/browserconfig.xml'/> -->
 <meta name='theme-color' content='#61dafb' />
 
-<!-- Open Graph Tags (Facebook) -->
 <meta property='og:site_name' content={title} />
 <meta property='og:type' content='website' />
 <meta property='og:title' content={title} />
@@ -48,7 +42,6 @@ const { title, description = SITE.DESCRIPTION, permalink = SITE.URL, image = '/i
 <meta property='og:description' content={description} />
 { image && <meta property='og:image' content={image} /> }
 
-<!-- Twitter -->
 <meta name='twitter:image:alt' content={title} />
 <meta name='twitter:creator' content='@kevelscy' />
 <meta property='twitter:card' content='summary_large_image' />
@@ -57,3 +50,7 @@ const { title, description = SITE.DESCRIPTION, permalink = SITE.URL, image = '/i
 <meta property='twitter:url' content={permalink} />
 <meta property='twitter:description' content={description} />
 { image && <meta property='twitter:image' content={image} /> }
+
+<link rel='preconnect' href='https://fonts.googleapis.com' />
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+<link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap' rel='stylesheet' />

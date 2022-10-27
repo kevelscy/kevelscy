@@ -11,16 +11,18 @@ const resourceLinks = [
 ---
 
 <script>
-  const copyEmailRef = document.getElementById('copyEmail')
-  const emailCopiedLabelRef = document.getElementById('emailCopiedLabel')
+  const copyEmailRef = document.getElementById('copyEmailFooter')
+  const emailCopiedLabelRef = document.getElementById('emailFooterCopiedLabel')
 
   const handleClick = () => {
-    console.log('copyEmail')
     navigator.clipboard.writeText('kevelscy@gmail.com')
     emailCopiedLabelRef?.classList.remove('translate-y-48')
     emailCopiedLabelRef?.classList.add('translate-y-0')
 
-    setTimeout(() => emailCopiedLabelRef?.classList.add('translate-y-48'), 2000)
+    setTimeout(() => {
+      emailCopiedLabelRef?.classList.remove('translate-y-0')
+      emailCopiedLabelRef?.classList.add('translate-y-48')
+    }, 2000)
   }
 
   copyEmailRef?.addEventListener('click', handleClick)
@@ -91,7 +93,7 @@ const resourceLinks = [
             if (anchorLink.label === '📪 Contact') return (
               <li class='relative'>
                 <div 
-                  id='emailCopiedLabel'
+                  id='emailFooterCopiedLabel'
                   class='py-1 px-2 bg-green-500 rounded-sm text-white font-bold absolute top-1 -left-32 transition-all translate-y-48'
                 >
                   ¡Email Copiado!
@@ -99,7 +101,7 @@ const resourceLinks = [
 
                 <button
                   class='font-medium ml-4 select-none hover:text-blue-500 hover:bg-blue-100 rounded-sm py-2 px-3 transition-colors'
-                  id='copyEmail'
+                  id='copyEmailFooter'
                 >
                   {anchorLink.label}
                 </button>
