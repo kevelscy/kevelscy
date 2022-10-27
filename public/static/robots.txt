@@ -1,0 +1,14 @@
+# Twitterbot
+User-agent: Twitterbot
+Disallow: 
+
+# *
+User-agent: *
+Allow: /
+Disallow: /404
+
+# Host
+Host: https://kevelscy.ml
+
+# sitemap
+Sitemap: https://kevelscy.ml/sitemap.xml

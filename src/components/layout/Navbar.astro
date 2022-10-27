@@ -1,0 +1,77 @@
+---
+const anchorLinks = [
+  { to: '#about', label: '🧑🏽 About' },
+  { to: '#projects', label: '💼 Projects' },
+  { to: '/', label: '📪 Contact' },
+]
+---
+
+<script>
+  const copyEmailRef = document.getElementById('copyEmail')
+  const emailCopiedLabelRef = document.getElementById('emailCopiedLabel')
+
+  const handleClick = () => {
+    navigator.clipboard.writeText('kevelscy@gmail.com')
+    emailCopiedLabelRef?.classList.remove('-translate-y-48')
+    emailCopiedLabelRef?.classList.add('translate-y-0')
+
+    setTimeout(() => emailCopiedLabelRef?.classList.add('-translate-y-48'), 2000)
+  }
+
+  copyEmailRef?.addEventListener('click', handleClick)
+</script>
+
+<header class="w-full h-16 fixed top-0 z-40">
+  <div
+    style={{ backdropFilter: 'saturate(180%) blur(5px)', backgroundColor: '#d3def847' }}
+    class='absolute top-0 w-full h-full border-b border-solid border-blue-100 border-opacity-60'
+  />
+
+  <div class="w-full h-16 absolute top-0 z-10 px-5">
+    <div class='w-full h-full max-w-4xl mx-auto flex justify-between items-center'>
+      <a
+        href='/'
+        class='font-black text-2xl hover:text-blue-500 hover:bg-blue-100 rounded-sm py-2 px-3 select-none transition-colors'
+      >
+        KEVELSCY
+      </a>
+
+      <nav class='hidden lg:block'>
+        <ul class='w-full h-full flex justify-center items-center'>
+          {
+            anchorLinks.map((anchorLink, index) => {
+              if (anchorLink.label === '📪 Contact') return (
+                <li class='relative'>
+                  <div
+                    id='emailCopiedLabel'
+                    class='py-1 px-2 bg-green-500 rounded-sm text-white font-bold absolute top-11 right-2 w-[135px] transition-all -translate-y-48'
+                  >
+                    ¡Email Copiado!
+                  </div>
+
+                  <button
+                    class='font-medium ml-4 select-none hover:text-blue-500 hover:bg-blue-100 rounded-sm py-2 px-3 transition-colors'
+                    id="copyEmail"
+                  >
+                    {anchorLink.label}
+                  </button>
+                </li>
+              )
+
+              return (  
+                <li>
+                  <a
+                    href={anchorLink.to}
+                    class='font-medium ml-4 select-none hover:text-blue-500 hover:bg-opacity-50 hover:bg-blue-100 rounded-sm py-2 px-3 transition-colors'
+                  >
+                    {anchorLink.label}
+                  </a>
+                </li>
+              )
+            })
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,116 @@
+---
+import FirebaseIcon from 'components/common/icons/FirebaseIcon.astro'
+import JavascriptIcon from 'components/common/icons/JavascriptIcon.astro'
+import MongoIcon from 'components/common/icons/MongoIcon.astro'
+import NextjsIcon from 'components/common/icons/NextjsIcon.astro'
+import NodeIcon from 'components/common/icons/NodeIcon.astro'
+import ReactIcon from 'components/common/icons/ReactIcon.astro'
+import TailwindIcon from 'components/common/icons/TailwindIcon.astro'
+import TypescriptIcon from 'components/common/icons/TypescriptIcon.astro'
+
+const techSkills = [
+    {
+      icon: JavascriptIcon,
+      title: 'Javascript',
+      description: '(El lenguaje que gobierna la web).',
+      webLink: 'https://developer.mozilla.org/es/docs/Web/JavaScript'
+    },
+    {
+      icon: TypescriptIcon,
+      title: 'Typescript',
+      description: '(Para un codigo mas "seguro" y escalable).',
+      webLink: 'https://www.typescriptlang.org/'
+    },
+    {
+      icon: ReactIcon,
+      title: 'React.js',
+      description: '(Librería front-end de preferencia).',
+      webLink: 'https://es.reactjs.org/'
+    },
+    {
+      icon: NextjsIcon,
+      title: 'Next.js',
+      description: '(El SDK de la web).',
+      webLink: 'https://nextjs.org/'
+    },
+    {
+      icon: NodeIcon,
+      title: 'Node.js',
+      description: '(Con Express para desarrollo back-end).',
+      webLink: 'https://nodejs.org/es/'
+    },
+    {
+      icon: MongoIcon,
+      title: 'MongoDB',
+      description: '(Bases de datos NoSQL).',
+      webLink: 'https://www.mongodb.com/'
+    },
+    {
+      icon: FirebaseIcon,
+      title: 'Firebase',
+      description: '(De los PaaS mas usados y accesibles).',
+      webLink: 'https://firebase.google.com/'
+    },
+    {
+      icon: TailwindIcon,
+      title: 'TailwindCSS',
+      description: '(Para un estilado rapido, moderno y optimizado).',
+      webLink: 'https://tailwindcss.com/'
+    },
+  ]
+---
+
+<div class='mt-20' id='skills'>
+  <span class='text-4xl font-black'>Mis Tecnologias</span>
+  <br /><br /><br />
+
+  <div class='w-full flex flex-col sm:flex-row justify-between items-start space-y-5 sm:space-y-0 sm:space-x-6'>
+    <ul class='w-full flex flex-col justify-start items-start space-y-5'>
+      {
+        [...techSkills.slice(0, 4)].map(techSkill => (
+          <li class='flex items-center space-x-3 hover:bg-blue-50 w-full rounded-r-md'>
+            <figure class='rounded-md bg-blue-50 h-[60px] w-[60px] p-2.5'>
+              { <techSkill.icon /> }
+            </figure>
+
+            <p>
+              <a
+                href={techSkill.webLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class='font-black text-xl hover:text-blue-500'
+              >
+                {techSkill.title}{' '}
+              </a>
+              <span>{techSkill.description}</span>
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <ul class='w-full flex flex-col justify-start items-start space-y-5'>
+      {
+        [...techSkills.slice(4, 8)].map(techSkill => (
+          <li class='flex items-center space-x-3 hover:bg-blue-50 w-full rounded-r-md'>
+            <figure class='rounded-md bg-blue-50 h-[60px] w-[60px] p-2.5'>
+              { <techSkill.icon /> }
+            </figure>
+
+            <p>
+              <a
+                href={techSkill.webLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class='font-black text-xl hover:text-blue-500'
+              >
+                {techSkill.title}{' '}
+              </a>
+              <span>{techSkill.description}</span>
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+---
+import type { IIconBasicProps } from 'types'
+interface Props extends IIconBasicProps {}
+
+const classes = Astro.props.classes
+---
+
+<svg
+  viewBox='0 0 24 24'
+  class={`w-10 h-10 fill-black ${classes}`}
+>
+  <path d='M1,21H23L12,2'></path>
+</svg>

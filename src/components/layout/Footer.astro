@@ -1,0 +1,124 @@
+---
+import InstagramIcon from 'components/common/icons/InstagramIcon.astro'
+import LinkedinIcon from 'components/common/icons/LinkedinIcon.astro'
+import GithubIcon from 'components/common/icons/GithubIcon.astro'
+
+const resourceLinks = [
+  { to: '#about', label: '🧑🏽 About' },
+  { to: '#projects', label: '💼 Projects' },
+  { to: '/', label: '📪 Contact' },
+]
+---
+
+<script>
+  const copyEmailRef = document.getElementById('copyEmail')
+  const emailCopiedLabelRef = document.getElementById('emailCopiedLabel')
+
+  const handleClick = () => {
+    console.log('copyEmail')
+    navigator.clipboard.writeText('kevelscy@gmail.com')
+    emailCopiedLabelRef?.classList.remove('translate-y-48')
+    emailCopiedLabelRef?.classList.add('translate-y-0')
+
+    setTimeout(() => emailCopiedLabelRef?.classList.add('translate-y-48'), 2000)
+  }
+
+  copyEmailRef?.addEventListener('click', handleClick)
+</script>
+
+
+<footer class='bg-blue-50 text-gray-900 py-6 z-20 mt-20 overflow-hidden'>
+  <div class='max-w-4xl mx-auto flex justify-center items-center px-4'>
+    <div class='w-1/2 text-left'>
+      <a
+        href='/'
+        class='font-black text-2xl hover:text-blue-500 hover:bg-blue-100 rounded-sm py-2 px-3 select-none transition-colors'
+      >
+        KEVELSCY
+      </a>
+      <br />
+
+      <ul class='pl-3 mt-4 flex items-center justify-start space-x-3'>
+        <li>
+          <a
+            href='https://github.com/kevelscy/'
+            rel='noopener noreferrer'
+            target='_blank'
+            class='social__github hover:top-1 hover:-left-1 hover:shadow-[4px_4px_0px_#61dafb]'
+          >
+            <GithubIcon classes='fill-white' />
+          </a>
+        </li>
+
+        <li>
+          <a
+            href='https://www.linkedin.com/in/scriptkev/'
+            rel='noopener noreferrer'
+            target='_blank'
+            class='social__linkedin hover:top-1 hover:-left-1 hover:shadow-[4px_4px_0px_#61dafb]'
+          >
+            <LinkedinIcon classes='fill-white' />
+          </a>
+        </li>
+
+        <li>
+          <a
+            href='https://www.instagram.com/kevelscy/'
+            rel='noopener noreferrer'
+            target='_blank'
+            class='social__instagram hover:top-1 hover:-left-1 hover:shadow-[4px_4px_0px_#61dafb]'
+          >
+            <InstagramIcon classes='fill-white' />
+          </a>
+        </li>
+      </ul>
+
+      <div class='pl-3 mt-4 flex items-center space-x-3'>
+        <span class='inline-flex'>
+          <img
+            src='https://images.emojiterra.com/google/noto-emoji/v2.028/128px/1f1fb-1f1ea.png'
+            class='w-6'
+          />
+          {'👨🏽‍💻'}
+        </span>
+      </div>
+    </div>
+
+    <nav class='w-1/2 justify-self-end'>
+      <ul class='h-full flex flex-col space-y-4 justify-center items-end'>
+        {
+          resourceLinks.map((anchorLink) => {
+            if (anchorLink.label === '📪 Contact') return (
+              <li class='relative'>
+                <div 
+                  id='emailCopiedLabel'
+                  class='py-1 px-2 bg-green-500 rounded-sm text-white font-bold absolute top-1 -left-32 transition-all translate-y-48'
+                >
+                  ¡Email Copiado!
+                </div>
+
+                <button
+                  class='font-medium ml-4 select-none hover:text-blue-500 hover:bg-blue-100 rounded-sm py-2 px-3 transition-colors'
+                  id='copyEmail'
+                >
+                  {anchorLink.label}
+                </button>
+              </li>
+            )
+
+            return (
+              <li>
+                <a
+                  class='font-medium ml-4 select-none hover:text-blue-500 hover:bg-blue-100 rounded-sm py-2 px-3 transition-colors'
+                  href={anchorLink.to}
+                >
+                  {anchorLink.label}
+                </a>
+              </li>
+            )
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+</footer>

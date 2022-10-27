@@ -1,0 +1,59 @@
+---
+import { SITE } from 'config'
+import '../../styles/base.css'
+
+export type Props = {
+  title: string
+  description?: string
+  permalink?: string
+  image?: string
+}
+
+const { title, description = SITE.DESCRIPTION, permalink = SITE.URL, image = '/images/kevin.webp' } = Astro.props as Props
+---
+
+<link rel='preconnect' href='https://fonts.googleapis.com' />
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+<link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap' rel='stylesheet' />
+
+<meta charset='UTF-8'>
+<meta name='keywords' content={SITE.KEYWORDS} />
+<meta name='author' content={SITE.AUTHOR} />
+<meta name='copyright' content={SITE.AUTHOR} />
+<meta name='robots' content='index' />
+<meta name='robots' content='follow' />
+<meta http-equiv='Content-Security-Policy' content='upgrade-insecure-requests' />
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<title>{title}</title>
+<meta name='title' content={title}/>
+<meta name='description' content={description}/>
+
+<link rel='apple-touch-icon' sizes='180x180' href='/static/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='/static/favicon-32x32.png'>
+<link rel='shortcut icon' type='image/png' sizes='16x16' href='/static/favicon-16x16.png'>
+<link rel='manifest' href='/static/site.webmanifest'>
+<link rel='mask-icon' href='/static/safari-pinned-tab.svg' color='#5bbad5'>
+
+<meta http-equiv='X-UA-Compatible' content='IE=edge'  />
+<meta name='msapplication-TileColor' content='#61dafb' />
+<!-- <meta name='msapplication-config' content='/static/browserconfig.xml'/> -->
+<meta name='theme-color' content='#61dafb' />
+
+<!-- Open Graph Tags (Facebook) -->
+<meta property='og:site_name' content={title} />
+<meta property='og:type' content='website' />
+<meta property='og:title' content={title} />
+<meta property='og:url' content={permalink} />
+<meta property='og:description' content={description} />
+{ image && <meta property='og:image' content={image} /> }
+
+<!-- Twitter -->
+<meta name='twitter:image:alt' content={title} />
+<meta name='twitter:creator' content='@kevelscy' />
+<meta property='twitter:card' content='summary_large_image' />
+<meta property='twitter:title' content={title} />
+<meta property='twitter:image:alt' content={title} />
+<meta property='twitter:url' content={permalink} />
+<meta property='twitter:description' content={description} />
+{ image && <meta property='twitter:image' content={image} /> }
